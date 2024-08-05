@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SppinnerCalculator</string>
+    <string-array name="operation">
+        <item>+</item>
+        <item>-</item>
+        <item>*</item>
+        <item>/</item>
+    </string-array>
 </resources>
