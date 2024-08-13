@@ -22,10 +22,7 @@ public class ToDoAdapter extends ArrayAdapter<Todo> {
         //找到哪一筆資料
         Todo todo = getItem(position);
         if(converView == null){
-            converView = LayoutInflater.
-                    from(getContext()).
-                    inflate(R.layout.list_sample,
-                            parent,false);
+            converView = LayoutInflater.from(getContext()).inflate(R.layout.list_sample, parent,false);
         }
         //將資料塞入設計好的樣式
         TextView tv_title = (TextView) converView.findViewById(R.id.listTvTitle);

@@ -56,12 +56,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                                 Todo newData = new Todo(newTitle, newContent);
                                 ToDoArrayList.add(newData);
                             }else if (action.equals("edit")){
-                                String index = o.getData().getStringExtra("INDEX");
+                                int index = o.getData().getIntExtra("INDEX",0);
                                 String newTitle = o.getData().getStringExtra("TITLE");
                                 String newContent = o.getData().getStringExtra("CONTENT");
 
-                                ToDoArrayList.get(Integer.parseInt(index)).setTitle(newTitle);
-                                ToDoArrayList.get(Integer.parseInt(index)).setContent(newContent);
+                                ToDoArrayList.get(index).setTitle(newTitle);
+                                ToDoArrayList.get(index).setContent(newContent);
                             }else{
                                 int removeIndex = o.getData().getIntExtra("INDEX", 0);
                                 ToDoArrayList.remove(removeIndex);
@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int i, long l) {
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
         Todo item = ToDoArrayList.get(i);
         String title = item.getTitle();
         String content = item.getContent();
@@ -126,6 +126,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         bundle.putString("ACTION","edit");
         bundle.putString("TITLE", title);
         bundle.putString("CONTENT", content);
+        bundle.putInt("INDEX", i);
 
         //利用intent攜帶bundle資料
         intent.putExtras(bundle);

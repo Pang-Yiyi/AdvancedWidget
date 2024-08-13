@@ -39,7 +39,7 @@ public class NewToDo extends AppCompatActivity {
 
             EditText tvTitle = (EditText)findViewById(R.id.newTitle);
             tvTitle.setText(title);
-            TextInputLayout textInputLayout = (TextInputLayout) findViewById(R.id.newTodoContent);
+            TextInputLayout textInputLayout = (TextInputLayout) findViewById(R.id.contentTextInputLayout);
             textInputLayout.getEditText().setText(content);
         }
     }
@@ -60,19 +60,20 @@ public class NewToDo extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String title = ((EditText)findViewById(R.id.newTitle)).getText().toString();
-                TextInputLayout textInputLayout = (TextInputLayout)findViewById(R.id.newTodoContent);
+                TextInputLayout textInputLayout = (TextInputLayout)findViewById(R.id.contentTextInputLayout);
                 String content = String.valueOf(textInputLayout.getEditText().getText());
 
                 Intent intent = new Intent();
-                intent.putExtra("Title",title);
-                intent.putExtra("Content",content);
+                intent.putExtra("TITLE",title);
+                intent.putExtra("CONTENT",content);
 
                 intent.putExtra("ACTION", action);
                 if(action.equals("edit")){
-                    intent.putExtra("INDEX", String.valueOf(index));
+                    intent.putExtra("INDEX", index);
                 }
                 setResult(Activity.RESULT_OK,intent);
-                finish();}
+                finish();
+            }
         });
         dialog.setNeutralButton("取消",null);
         dialog.show();
